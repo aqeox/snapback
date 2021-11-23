@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Footer = () => {
     return (
-        <section className="pt-20 relative mx-6 lg:px-28">
+        <section className="pt-20 relative lg:px-28 mx-10 max-w-7xl xl:m-auto">
             <img src="assets/golden_pyramyd.png" alt="pyramid" className="absolute -right-6 w-20 h-20 lg:right-40" />
             <h1 className="text-4xl font-extrabold text-gray">Who are we?</h1>
             <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink">Creative teams</h1> 

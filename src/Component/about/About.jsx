@@ -2,22 +2,21 @@ import React from 'react'
 
 export const About = () => {
     return (
-        <section className="xl:grid grid-cols-2 xl:pb-40 xl:mx-10">
-                <section className="lg:pr-28  xl:mt-10">
-                    <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink text-3xl font-extrabold leading-relaxed xl:text-5xl">8,888 unique Mekas</h1>
-                    <h1 className="text-3xl font-extrabold xl:text-5xl">who need Drivers.</h1>
+        <section className="xl:grid grid-cols-2 xl:pb-20 flex flex-col items-center mx-10 max-w-7xl xl:m-auto">
+                <section className=" md:flex md:flex-col xl:pr-32 md:max-w-xl">
+                    <h1 className="text-white text-3xl font-extrabold leading-relaxed xl:text-4xl">Welcome To NFTsnapback.</h1>
 
-
-                    <p className="mt-10 text-gray text-xl leading-loose">The MekaVerse is a collection of 8,888 generative Mekas with hundreds of elements inspired by the Japan Mecha universes.</p>
-
-                    <p className="mt-10 text-gray text-xl leading-loose">Each artwork is original, with its own color palette and creation. The objective was to make each Meka unique in order to prioritize quality above quantity.</p>
+                    <p className="text-white text-lg md:text-xl leading-loose my-10">The 1st Project dedicated to bring NFT and fashion to the real world.</p>
+                    <p className="text-white text-lg md:text-xl leading-loose mb-10">NFTsnapback is the 1st Digi-phsyical NFT that is backed by a physical Snapback.</p>
+                    <button className="bg-gradient-to-r from-pink to bg-softPink rounded-lg px-10 py-6 sm:px-20 font-black text-white text-xl md:w-96">Claim CyberKongz NFTsnapback</button>
                 </section>
 
-                <section className="flex 
-                ">
-                    <video loop autoPlay muted>
-                    <source src="/assets/about-vid.mp4" type="video/mp4" className="h-5"/>
-                    </video>
+                <section className="flex md:max-w-xl">
+                    {/* <video loop autoPlay muted>
+                    <source src="/assets/hat1.png" type="video/mp4" className="h-5"/>
+                    </video> */}
+
+                    <img src="/assets/hats.png" alt="hat"/>
                 </section>
                 
          </section>

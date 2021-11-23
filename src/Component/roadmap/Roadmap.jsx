@@ -1,88 +1,193 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+
 
 export const Roadmap = () => {
+
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const elHeight = useRef(null)
+
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+
+        
+        
+
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        console.log(elHeight.current.clientHeight)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+
+        
+        
+    }, [])
+
+
+
+    useEffect(() => {
+
+        var frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 500, 
+        // get page height from video duration
+        setHeight = document.getElementById("setHeight"), 
+        // select video element         
+        vid = document.getElementById('vid'); 
+        // var vid = $('#v0')[0]; // jquery option
+
+        // dynamically set the page height according to video length
+        vid.addEventListener('loadedmetadata', function() {
+        setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+        });
+
+
+        // Use requestAnimationFrame for smooth playback
+        function scrollPlay(){  
+        var frameNumber  = window.pageYOffset/playbackConst;
+        vid.currentTime  = frameNumber;
+        window.requestAnimationFrame(scrollPlay);
+        }
+        
+        if (scrollPosition > 1400) {
+            window.requestAnimationFrame(scrollPlay);
+        }
+    }, [scrollPosition])
+
+     //start950px end 2700p
+
+    
+
+    // scrollPosition >= 900 ?  :  : console.log("keke")
+
+    const setImagePosition = () => {
+        let styles = {}
+        if (scrollPosition >= 950){
+            const firstStyle = {
+               transform: `translateY(${scrollPosition}px)`
+            }
+            styles = Object.assign(styles,firstStyle)
+        } else {
+           return {transform: `translateY(1050px)`}
+        }
+        
+        if (scrollPosition <= 2700){
+            const firstStyle = {
+               transform: `translateY(${scrollPosition}px)`
+            }
+            styles = Object.assign(styles,firstStyle)
+        } else {
+           return {transform: `translateY(2700px)`}
+        }
+        return styles
+    }
+
+
     return (
-        <section className="pb-20 mx-6 lg:px-28">
-                <section className="text-center">
-                    <h1 className="text-4xl font-bold pb-10">Roadmap</h1>
-                    <p className="text-gray leading-loose text-md">This roadmap outlines our goals and where we want to take MekaVerse. We have a lot of ideas and concepts that we are working on. It may evolve over time and hopefully become even better!</p>
+        <section className="pb-20 mx-6 lg:pl-28 text-white font-medium max-w-7xl xl:pt-32 relative" id="setHeight" >
+                <section className="text-center max-w-3xl xl:m-auto" >
+                    <h1 className="text-4xl font-bold pb-10 text-transparent text-white">Welcome To NFTsnapback.</h1>
+                    <p className="text-white leading-loose text-md">This roadmap outlines our goals and where we want to take MekaVerse. We have a lot of ideas and concepts that we are working on. It may evolve over time and hopefully become even better!</p>
                 </section>
 
-                <section className="mt-16 relative">
-                    <aside className="w-1 h-60 bg-gradient-to-b from-softPink to-pink absolute left-5" />
+                <section ref={elHeight}  className="mt-16 relative"  >
+                    <aside className="w-1 h-60 bg-gradient-to-b from-primaryGold to-secondaryGold absolute left-5"  />
 
-                    <aside className=" w-5 h-5 transform -rotate-45 bg-pink relative top-24 left-3 shadow-def" />
+                    <aside className=" w-5 h-5 transform -rotate-45 bg-primaryGold relative top-24 left-3 shadow-def" />
                     
                     <aside className=" w-px bg-gray absolute left-21 top-60 -bottom-16" />
+                    {/* <img src={image} alt="front" className="absolute right-px -top-2/4 w-500" style={setImagePosition()}/> */}
 
-                    <section>
-                        <main className="bg-dark-blue w-full mt-5 max-w-2xl">
+                    <video id="vid" muted className="absolute right-px w-500 -top-2/4" style={setImagePosition()} >
+                    <source src="/assets/hats-spin.mp4" type="video/mp4"  />
+                    </video>
+                <section>
+
+                        
+
+                        <main className=" bg-darkgray w-full mt-5 max-w-2xl rounded-lg">
 
                             <div className="ml-14 py-14 mr-9">
-                                <h1 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink font-bold">.01</h1>
+                                <h1 className="text-xl text-white font-bold">.01</h1>
 
-                                <h1 className="text-2xl font-extrabold pb-8">Launch Roadmap</h1>
-                                <p className="leading-loose text-gray">Quality comes first. The goal is to make our first drop as cool as possible so we can have freedom to develop the universe. We're still working on a number of rarity criteria, as well as a lot of new Lore concepts. The drop release date will be announced as soon as the project's quality and technical aspects are fully progressed. We also need to work hard with our community to make Discord and Twitter even cooler with new additions throughout time.</p>
+                                <h1 className="text-2xl font-extrabold pb-8 text-white">SNAPSHOT</h1>
+                                <p className="leading-loose text-whiteSmoke">We will soon be taking a SNAPSHOT of the CYBERKONGZ Smart Contract.
+                                Only 1 NFT will be Airdropped per Account.
+                                Only appx 210 will be allocated out of 275 NFT's.</p>
                             </div>
                         </main>
                     </section>
 
-                    <aside className=" w-5 h-5 transform -rotate-45 bg-white relative top-24 left-3 shadow-def" />
+                    <aside className=" w-5 h-5 transform -rotate-45 bg-primaryGold relative top-24 left-3 shadow-def" />
 
                     {/* <section className="relative h-full">
                         <aside className=" w-px h-96 bg-gray absolute left-6 top-32" />
                     </section> */}
 
                     <section>
-                        <main className="bg-dark-blue w-full mt-5 max-w-2xl">
+                        <main className="bg-darkgray w-full mt-5 max-w-2xl rounded-lg">
 
                             <div className="ml-14 py-14 mr-9">
-                                <h1 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink font-bold">.02</h1>
+                                <h1 className="text-xl text-white font-bold">.02</h1>
 
-                                <h1 className="text-2xl font-extrabold pb-8">Physical Part</h1>
-                                <p className="leading-loose text-gray">Mekas have a huge potential as physical creations. We are passionate about 3D printing and want to bring our concept to life with high-quality materials. After several talks with famous art toys makers, we are currently working on some concepts but wait, let’s keep a little mystery for the moment! We also aim to create clothing and merchandise using high-quality materials and textiles with eco-friendly fabrics. Also, Matt. B would love to explore a new and ambitious 3D Art Direction about streetwear and fashion in general. By following our design principles, we will do everything possible to create something amazing before, during, and after the launch of the first Drop!</p>
+                                <h1 className="text-2xl font-extrabold pb-8 text-white">AIRDROP</h1>
+                                <p className="leading-loose text-whiteSmoke">Once SNAPSHOT is complete, we will mint the NFT's, and randomly assign each NFT to the Eth address, that was randomly selected also.
+                                </p>
+​                                <p>There will be 3 kept behind</p>
+                                <ul>
+                                    <li>: #1 for charity auction</li>
+                                    <li>: 1 for giveaway</li>
+                                    <li>: 1 To claim myself</li>
+                                </ul>
                             </div>
                         </main>
                     </section>
 
-                    <aside className=" w-5 h-5 transform -rotate-45 bg-white relative top-24 left-3 shadow-def" />
+                    <aside className=" w-5 h-5 transform -rotate-45 bg-primaryGold relative top-24 left-3 shadow-def" />
 
                     <section>
-                        <main className="bg-dark-blue w-full mt-5 max-w-2xl">
+                        <main className="bg-darkgray w-full mt-5 max-w-2xl rounded-lg">
 
                             <div className="ml-14 py-14 mr-9">
-                                <h1 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink font-bold">.03</h1>
+                                <h1 className="text-xl text-white font-bold">.03</h1>
 
-                                <h1 className="text-2xl font-extrabold pb-8">MekaVerse x Artists</h1>
-                                <p className="leading-loose text-gray">We know a lot of artists in the NFT community and beyond! We'd like to develop a series in which each Meka is made in collaboration with artists we like and under their artistic direction. We would create a small collection of 1/1 unique Mekas by artists, with all proceeds going to them! This collection is incredibly important to us, and we are excited to see what we can accomplish together!</p>
+                                <h1 className="text-2xl font-extrabold pb-8 text-white">CLAIM</h1>
+                                <p className="leading-loose text-whiteSmoke">Once the production of the physical Snapback is complete you will be able to come to the website and claim the physical NFTsnapback.There will be subject to $15 Shipping fee to claim your Physical NFTsnapback</p>
                             </div>
                         </main>
                     </section>
 
-                    <aside className=" w-5 h-5 transform -rotate-45 bg-white relative top-24 left-3 shadow-def" />
+                    <aside className=" w-5 h-5 transform -rotate-45 bg-primaryGold relative top-24 left-3 shadow-def" />
 
                     <section>
-                        <main className="bg-dark-blue w-full mt-5 max-w-2xl">
+                        <main className="bg-darkgray w-full mt-5 max-w-2xl rounded-lg">
 
                             <div className="ml-14 py-14 mr-9">
-                                <h1 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink font-bold">.04</h1>
+                                <h1 className="text-xl text-white font-bold">.04</h1>
 
-                                <h1 className="text-2xl font-extrabold pb-8">Meka Multiverse</h1>
-                                <p className="leading-loose text-gray">After presenting our original Mekas, we want to explore more abstract subjects in order to present a second, very distinct drop. Our aim is simply to aesthetically enlarge the universe, and each relationship between the Meka Dimensions will be described and explained. We truly want to blend artistic disciplines, as well as move beyond our graphic style and look outside our comfort zone. We also want to see if it would be possible to collaborate with famous mecha licenses on future releases. That would be incredible!</p>
+                                <h1 className="text-2xl font-extrabold pb-8 text-white">SHIPPED</h1>
+                                <p className="leading-loose text-whiteSmoke">You can expect that we are excited to have the NFTsnapback go out to the community as soon as possible upon receiving your order.
+                                You will be notified and receive the track-and-trace details of your Parcel.Any other relevant information regarding your order will be communicated using the email address you provided.</p>
                             </div>
                         </main>
                     </section>
 
-                    <aside className=" w-5 h-5 transform -rotate-45 bg-white relative top-24 left-3 shadow-def" />
+                    <aside className=" w-5 h-5 transform -rotate-45 bg-primaryGold relative top-24 left-3 shadow-def" />
 
                     <section>
-                        <main className="bg-dark-blue w-full mt-5 max-w-2xl">
+                        <main className="bg-darkgray w-full mt-5 max-w-2xl rounded-lg">
 
                             <div className="ml-14 py-14 mr-9">
-                                <h1 className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink to-softPink font-bold">.05</h1>
+                                <h1 className="text-xl text-white font-bold">.05</h1>
 
-                                <h1 className="text-2xl font-extrabold pb-8">Future of Mekas</h1>
-                                <p className="leading-loose text-gray">When all of these stages are completed, we’ll take care of maintaining the Meka Universe. We both come from the design industry, and we are truly passionate about Art, Short films, Physical and Digital Exploration, and we would like to explore even more, with the desire to always make events more impressive and ambitious. We are counting on your support! We look forward to seeing what happens in the future! Love from Mekas ♥</p>
+                                <h1 className="text-2xl font-extrabold pb-8 text-white">NFT Snapback</h1>
+                                <p className="leading-loose text-whiteSmoke">I have been over the last 2 Years as an individual supporting Young Teens and paying for there tuition and Higher education Degrees.I want to carry that over to a scale where I can not only do that but also provide additional needs like building roads, community centres, cleaning the streets for cleaner environment, education hubs and soo much more. A certain % of profits will be dedicated to the charity programme. % of the Profits will go towards developing the village and town I come from, and provide a better future for children and young adults, one that I was fortunate to get.
+</p>
                             </div>
                         </main>
                     </section>
