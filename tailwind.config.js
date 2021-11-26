@@ -32,7 +32,8 @@ module.exports = {
       },
 
       inset: {
-        21: '21px'
+        21: '21px',
+        '1/5': '-40%'
       },
       
       screens: {

@@ -11,6 +11,13 @@ export const Sponsor = () => {
                 <img src="/assets/curate.svg" alt="logo" className=" w-36 h-16"/>
             </section>
 
+            <section className="bg-white rounded-lg flex justify-center items-center p-5 mb-10">
+                <img src="/assets/Rizzle.png" alt="logo" className=" w-36 h-16"/>
+            </section>
+            
+            <section className="bg-white rounded-lg flex justify-center items-center p-5 mb-10">
+                <img src="/assets/curate.svg" alt="logo" className=" w-36 h-16"/>
+            </section>
         </div>
     )
 }

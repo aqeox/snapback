@@ -1,9 +1,10 @@
 import React from 'react'
-import { About } from '../about/About'
-import { Product } from '../product/Product'
-import { Roadmap } from '../roadmap/Roadmap'
-import { Footer } from '../footer/Footer'
-import { Sponsor } from '../Sponsors/Sponsor'
+import { About } from '../UI/about/About'
+import { Product } from '../UI/product/Product'
+import { Roadmap } from '../UI/roadmap/Roadmap'
+import { Footer } from '../UI/footer/Footer'
+import { Sponsor } from '../UI/Sponsors/Sponsor'
+import { Charity } from '../UI/Charity/Charity'
 
 
 export const Body = () => {
@@ -11,10 +12,11 @@ export const Body = () => {
         <div className="text-white mt-20 md:flex flex-col justify-center ">
             
             <About />
-            <Product />
             <Roadmap/>
+            <Product />
             <Footer />
             <Sponsor />
+            <Charity />
         </div>
     )
 }
